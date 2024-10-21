@@ -3,32 +3,32 @@ import { useNavigate } from 'react-router-dom';
 import { ControleLivros } from './controle/ControleLivros';
 import { ControleEditora } from './controle/ControleEditora';
 
-// a) Instanciar controladores de livros e editoras
+//Instanciar controladores de livros e editoras
 const controleLivro = new ControleLivros();
 const controleEditora = new ControleEditora();
 
 const LivroDados = () => {
-    // b) Definir vetor de opções, invocando getEditoras
+    //Definir vetor de opções, invocando getEditoras
     const opcoes = controleEditora.getEditoras().map(editora => ({
         value: editora.codEditora,
         text: editora.nome
     }));
 
-    // c) Definir propriedades com useState
+    //Definir propriedades com useState
     const [titulo, setTitulo] = useState('');
     const [resumo, setResumo] = useState('');
     const [autores, setAutores] = useState('');
     const [codEditora, setCodEditora] = useState(opcoes[0].value);
 
-    // d) Atributo navigate recebendo useNavigate
+    //Atributo navigate recebendo useNavigate
     const navigate = useNavigate();
 
-    // e) Método tratarCombo para definir a editora selecionada
+    //Método tratarCombo para definir a editora selecionada
     const tratarCombo = (evento) => {
         setCodEditora(Number(evento.target.value));
     };
 
-    // f) Método incluir, que lida com o envio do formulário
+    //Método incluir, que lida com o envio do formulário
     const incluir = (evento) => {
         evento.preventDefault(); // Impedir comportamento padrão do formulário
 
@@ -48,7 +48,7 @@ const LivroDados = () => {
         navigate('/');
     };
 
-    // g) Retornar o formulário para inclusão do livro
+    // Retornar o formulário para inclusão do livro
     return (
         <main className="container">
             <h1>Adicionar Livro</h1>
@@ -83,7 +83,7 @@ const LivroDados = () => {
                         required
                     />
                 </div>
-                {/* h) Combo box para seleção de editora */}
+                {/* Combo box para seleção de editora */}
                 <div className="mb-3">
                     <label className="form-label">Editora</label>
                     <select 
@@ -98,7 +98,7 @@ const LivroDados = () => {
                         ))}
                     </select>
                 </div>
-                {/* i) Botão de submissão */}
+                {/* Botão de submissão */}
                 <button type="submit" className="btn btn-primary">Incluir</button>
             </form>
         </main>
